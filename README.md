@@ -2,13 +2,25 @@
 
 Extract information from the access.log file
 
-### Run app
+### General info
 
-`go run main.go -f access.log`
+* You must copy the file you want to analyze to the application folder
+* **You do not lose the original file.** The app generates a copy log.copy
 
 ### Build for Windows
 
 `GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ go build -ldflags "-H windowsgui" -o tlsquid.exe ./main.go`
+
+### How to use the app in linux
+
+```go
+go build -o tlsquid main.go
+
+./tlsquid -f name.log
+
+//If you do not specify -f the application defaults to access.log
+
+```
 
 ### Extract from the original log
 
