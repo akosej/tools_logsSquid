@@ -28,7 +28,7 @@ func main() {
 	}(file)
 
 	// Check if the file already exists
-	archivo, err := os.OpenFile(*nameFile+".copy", os.O_WRONLY|os.O_TRUNC, 0666)
+	_, err = os.Stat(*nameFile + ".copy")
 	if os.IsNotExist(err) {
 		// El archivo no existe, crearlo
 		file, err := os.Create(*nameFile + ".copy")
@@ -44,6 +44,7 @@ func main() {
 		}(file)
 		fmt.Println("Se ha creado correctamente el archivo.")
 	}
+	archivo, _ := os.OpenFile(*nameFile+".copy", os.O_WRONLY|os.O_TRUNC, 0666)
 	// Clear file content
 	if err := archivo.Truncate(0); err != nil {
 		fmt.Println("Error al borrar el contenido del archivo:", err)
