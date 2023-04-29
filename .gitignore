@@ -1,2 +1,5 @@
 /vendor/
-/agaConvertLogs.exe
+access.log.copy
+.idea
+agaTlSquid.exe
+tlsquid
